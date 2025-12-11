@@ -1,0 +1,32 @@
+# Apple Stock Price Modelling and Forecasting
+
+##  Project Overview
+This project analyzes historical stock data for Apple Inc. (AAPL) to identify trends and forecast future price movements. The goal is to model Apple stock price and predict price movements for the next one hundred (100) days.
+
+##  Data Source
+* **Source:** Five (5) years historical data of Apple stock price was downloaded from Yahoo Finance 
+* **Time Period:** Data collected was from Nov 02, 2020 - Oct 31, 2025
+* **Frequency:** Daily Adjusted Closing Prices
+
+##  Methodology
+I implemented the following approaches:
+
+* **Model Identification:** The chart of Apple stock price trends over the chosen time period, and its ACF and PACF plots reveal that the price data are dependent (autocorrelated). This necessitate the use of Apple stock return data - its chart is stable, and the ACF and PACF plots show no dependency. For this reason, I choose ARIMA(0,1,0) model for this data.
+
+* **Model Estimation:** The estimation for the ARIMA(0,1,0) model is statistically significant (p < 0.05). A plot of the model prediction follows that of the actual Apple stock price closely.
+
+* **Model Diagnostics:** I carried out four (4) diagnostic checks (tests) on the residual to verify whether the ARIMA(0,1,0) model captures all the patterns in the data or not.
+    * Residual plot: While the residual plot shows no pattern, variation in a period is higher than other periods.
+    * ACF plot: Except for lag 0, all the lags of the ACF plot do not spike above the confidence interval - the residuals are independent.
+    * Ljung-Box test: All data points are above the threshold (p > 0.05) - the residuals are truly independent.
+    * QQ plot: The residuals follow a normal distribution to some extent with fat tails on both ends.
+
+##  Forecast 
+* **Result:** There is 80% chance that Apple stock price will be between $230 and $310, and 95% chance that it will be between $210 and $340 for the next 100 days.
+
+##  Next Step
+I will consider using a model that will account for the period of higher variation in the residuals
+
+##  Tools Used
+* **Language:** Python
+* **Libraries:** 'pandas', 'numpy', 'matplotlib', 'datetime', 'statsmodels', 'yfinance'
